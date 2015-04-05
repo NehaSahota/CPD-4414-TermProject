@@ -10,6 +10,7 @@ import credentials.Credentials;
 import credentials.test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,7 +105,25 @@ public class Student {
     
     }
     
+    public static boolean LoginUser(String email, String pass){
+        boolean check = false;
+        try{
+            
+            Connection conn = Credentials.getConnection();
+          
+             PreparedStatement pstmt = conn.prepareStatement("Select * FROM student WHERE email = ? AND password = ?");
+             pstmt.setString(1, email);
+             pstmt.setString(2, pass);
+             ResultSet rs = pstmt.executeQuery();
+             check = rs.next();
+             conn.close();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return check;
     
+    }
     
     
 }
