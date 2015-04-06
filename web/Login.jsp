@@ -27,11 +27,11 @@
                         <tbody>
                             <tr>
                                 <td>Email : </td>
-                                <td><input type="text" name="email" value="<jsp:getProperty name ="email" property="email"/>"></td>
+                                <td><input type="text" name="email" value="<jsp:getProperty name ="student" property="email"/>"></td>
                             </tr>
                             <tr>
                                 <td>Password: </td>
-                                <td><input type="password" name="password" value="<jsp:getProperty name="password" property="password"/>"></td>
+                                <td><input type="password" name="password" value="<jsp:getProperty name="student" property="password"/>"></td>
                             </tr>
                             <tr>
                                 <td><center><a href="Register.jsp">Register</a></center>></td>
