@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -90,16 +91,17 @@ public class Student {
             try (Connection conn = Credentials.getConnection()) {
                 
             String query = "INSERT INTO student (firstName,lastName,email,address,password) VALUES ('"+firstName+"','"+lastName+"','"+email+"','"+email+"','"+address+"','"+password+"')";
-            PreparedStatement pstmt = conn.prepareStatement(query);
+            Statement stmt = conn.createStatement();
                 try{
-                    pstmt.executeUpdate();
+                    stmt.executeUpdate(query);
+                    stmt.close();
                     conn.close();
                 }catch (SQLException ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
                 }
     
     } catch (SQLException ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     
@@ -119,10 +121,32 @@ public class Student {
              conn.close();
 
         }catch (SQLException ex) {
-            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
         }
         return check;
     
+    }
+    
+    public void GetUser() throws SQLException{
+    
+     Connection conn = Credentials.getConnection();
+     String query = "SELECT * FROM student WHERE email = '"+email+"'";
+     Statement stmt = conn.createStatement();
+     ResultSet rs = stmt.executeQuery(query);
+     
+     while(rs.next()){
+         firstName = rs.getString("firstName");
+         lastName = rs.getString("lastName");
+         email = rs.getString("email");
+         address = rs.getString("address");
+         password = rs.getString("password");
+     
+     }
+     
+         stmt.close();
+         conn.close();
+     
+     
     }
     
     
