@@ -90,7 +90,7 @@ public class Student {
     public void RegisterUser(){
             try (Connection conn = Credentials.getConnection()) {
                 
-            String query = "INSERT INTO student (firstName,lastName,email,address,password) VALUES ('"+firstName+"','"+lastName+"','"+email+"','"+email+"','"+address+"','"+password+"')";
+            String query = "INSERT INTO student (firstName,lastName,email,address,password) VALUES ('"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+password+"')";
             Statement stmt = conn.createStatement();
                 try{
                     stmt.executeUpdate(query);
