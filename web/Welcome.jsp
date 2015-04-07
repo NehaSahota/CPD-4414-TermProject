@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
@@ -22,29 +22,64 @@
         <title>Welcome Page</title>
     </head>
     <body>
-       <%   
-       HttpSession sessionUser = request.getSession(false);
-       String us = (String)sessionUser.getAttribute("email");
-       
-       Student std1 = new Student();
-       std1.setEmail(us);
-       std1.GetUser();
-       
-       out.print("Welcome ");
-       out.print(std1.getFirstName());
-       out.print(" ");
-       out.print(std1.getLastName());
-       out.print("!!!!");
-       out.print("<br>");
-       out.print(std1.getEmail());
-       out.print("<br>");
-       out.print(std1.getAddress());
-       
- 
-       %>
-       
-       <br><br>
-       <a href="Logout.jsp">Log Out</a>
-       <br><br>
-    </body>
+        <div class="panel panel-info">
+            <div class="panel-heading">Panel Heading</div>
+                <div class="panel-body">
+                    <div class="container" style="width: 50%;float: left;">
+
+                    <ul class="nav nav-pills nav-stacked">
+
+                        <li role="presentation" class="active"><a href="#">Personal Information</a></li>
+                        <li role="presentation"><a href="#">Add Feedback</a></li>
+                        <li role="presentation"><a href="#">View Feedback</a></li>
+
+                    </ul>
+
+
+
+                    </div>
+
+                <!--              <div class="container"> -->
+                <div class="well" style="width: 50%;float: right;">
+                    
+                     <%
+                         HttpSession sessionUser = request.getSession(false);
+                         String us = (String) sessionUser.getAttribute("email");
+
+                         Student std1 = new Student();
+                         std1.setEmail(us);
+                         std1.GetUser();
+
+                         out.print("<h3>Welcome</h3>");
+                         out.print("<br>");
+                         out.print("First Name :");
+                         out.print(std1.getFirstName());
+                         out.print("<br>");
+                         out.print("Last Name :");
+                         out.print(std1.getLastName());
+                       
+                         out.print("<br>");
+                         out.print("Email :");
+                         out.print(std1.getEmail());
+                         out.print("<br>");
+                         out.print("Address :");
+                         out.print(std1.getAddress());
+                          out.print("<br>");
+
+                     %>
+                       <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>Edit</button>
+                     
+                   
+            </div>
+
+
+            <br><br>
+            <a href="Logout.jsp">Log Out</a>
+            <br><br>
+        </div>
+        <div class="panel-footer"><center>Copyright &copy; Neha</center></div>
+    </div>
+
+
+</body>
 </html>
