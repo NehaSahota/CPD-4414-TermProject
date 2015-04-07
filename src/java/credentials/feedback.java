@@ -6,16 +6,22 @@
 
 package credentials;
 
+import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import javax.json.stream.JsonParser;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -40,6 +46,39 @@ public class feedback {
     public String doGet(@PathParam("id") String id) {
         String str = getResults("SELECT * FROM feedback where id = ?", id);
         return str;
+    }
+    
+    
+    @POST
+    @Consumes("application/json")
+    public void doPost(String str) {
+        JsonParser parser = Json.createParser(new StringReader(str));
+        Map<String, String> map = new HashMap<>();
+        String name = "", value;
+
+        while (parser.hasNext()) {
+            JsonParser.Event evt = parser.next();
+            switch (evt) {
+                case KEY_NAME:
+                    name = parser.getString();
+                    break;
+                case VALUE_STRING:
+
+                    value = parser.getString();
+                    map.put(name, value);
+                    break;
+                case VALUE_NUMBER:
+                    value = Integer.toString(parser.getInt());
+                    map.put(name, value);
+                    break;
+            }
+        }
+        System.out.println(map);
+        String feedback_id = map.get("feedback_id");
+        String id = map.get("id");
+        String feedback = map.get("feedback");
+        String category = map.get("category");
+        doUpdate("insert into feedback ( feedback_id, id, feedback, category) values ( ?, ?, ?,?)", feedback_id, id, feedback, category);
     }
     
     private String getResults(String query, String... params) {
