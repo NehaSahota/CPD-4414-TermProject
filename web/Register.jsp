@@ -21,9 +21,34 @@
         <title>Register</title>
     </head>
     <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">
+                <img alt="Brand" src="...">
+              </a>
+            </div>
+          </div>
+        </nav>
+
+<!--      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="Register.jsp">Register <span class="sr-only">(current)</span></a></li>
+        
+        <li><a href="Login.jsp">Login</a></li>
+        </ul>
+        </div>-->
+
     <center><h1>Register Here</h1></center>
         <jsp:useBean id="student" scope="request" class="beans.Student"></jsp:useBean>
-        <form name="registration_form" action="RegistrationServlet" method="POST">
+    
+    
+    <div class="panel panel-info">
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+    
+        <div class="container">
+            <form name="registration_form" action="RegistrationServlet" method="POST">
            
 
 <!--            <center>-->
@@ -44,7 +69,7 @@
                             <input type="text" class="form-control" 
                                    placeholder="Username" name="firstName" value="<jsp:getProperty name="student" property="firstName"/>" 
                             aria-describedby="basic-addon1">
-                    </div>            
+                    </div> <br>           
 <!--                </tr>
                 <tr>
                     <td>Last Name :</td>-->
@@ -57,7 +82,7 @@
                 <tr> 
                    
                     <td>Email : </td>-->
-                    </div>
+                    </div><br>   
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1">Email</span>
                             <input type="text" class="form-control" 
@@ -66,7 +91,7 @@
 <!--                </tr>
                 <tr>
                     <td>Address :</td>-->
-                    </div>
+                    </div><br>   
                                      
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1">Address</span>               
@@ -76,26 +101,31 @@
 <!--                </tr>
                 <tr>
                     <td>Password : </td>-->
-                    </div>
+                    </div><br>   
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1">Password</span>                     
                             <input type="password" class="form-control" 
-                                   placeholder="Passwords" name="password" value="<jsp:getProperty name = "student" property="password"/>"
+                                   placeholder="Password" name="password" value="<jsp:getProperty name = "student" property="password"/>"
                             aria-describedby="basic-addon1">
 <!--                </tr>
 
                 </tbody>
 
             </table>-->
-                     </div>
-            <input type="reset" value="Clear" name="Clear" class="btn btn-default" />
-            <input type="submit" value="Register" name="Register" class="btn btn-default"  />
+                     </div><br>  
+                     
+                     <center><input type="reset" value="Clear" name="Clear" class="btn btn-default" /></center>
+                     <center><input type="submit" value="Register" name="Register" class="btn btn-default"  /></center>
 
 
 
 <!--        </center>-->
-        <center><p>Already Registered?</p><a href="Login.jsp">Click here to Login</a></center>
-    </form>
-
+                 <center><p>Already Registered?</p><a href="Login.jsp">Click here to Login</a></center>
+        </form>
+        </div>
+    </div>
+                            <div class="panel-footer"><center>Copyright &copy; Neha</center></div>
+    </div>
+                           
 </body>
 </html>
