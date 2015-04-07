@@ -20,6 +20,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.json.stream.JsonParser;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -82,6 +83,47 @@ public class feedback {
         doUpdate("insert into feedback ( feedback_id, id, feedback, category) values ( ?, ?, ?,?)", feedback_id, id, feedback, category);
     }
     
+    
+    
+    @PUT
+    @Path("{id}/{feedback_id}")
+    @Consumes("application/json")
+    public void doPut(@PathParam("id") String id, @PathParam("feedback_id") String feedback_id,String str) {
+        JsonParser parser = Json.createParser(new StringReader(str));
+        Map<String, String> map = new HashMap<>();
+        String name = "", value;
+        while (parser.hasNext()) {
+            JsonParser.Event event = parser.next();
+            switch (event) {
+                case KEY_NAME:
+                    name = parser.getString();
+                    break;
+                case VALUE_STRING:
+                    value = parser.getString();
+                    map.put(name, value);
+                    break;
+                case VALUE_NUMBER:
+                    value = Integer.toString(parser.getInt());
+                    map.put(name, value);
+                    break;
+            }
+        }
+        System.out.println(map);
+
+        
+       
+        String feedback = map.get("feedback");
+        String category = map.get("category");
+        doUpdate("update feedback SET feedback = ?, category = ?  where id = ? AND feedback_id = ?" ,feedback, category, id , feedback_id);
+
+    }
+    
+    @DELETE
+    @Path("{id}/{feedback_id}")
+    public void doDelete(@PathParam("id") String id, @PathParam("feedback_id") String feedback_id, String str) {
+        doUpdate("delete from feedback where id = ? AND feedback_id = ?", id , feedback_id);
+    }
+    
     private String getResults(String query, String... params) {
         JsonArrayBuilder productArray = Json.createArrayBuilder();
         String myString = new String();
@@ -118,38 +160,6 @@ public class feedback {
     }
     
     
-    @PUT
-    @Path("{id}/{feedback_id}")
-    @Consumes("application/json")
-    public void doPut(@PathParam("id") String id, @PathParam("feedback_id") String feedback_id,String str) {
-        JsonParser parser = Json.createParser(new StringReader(str));
-        Map<String, String> map = new HashMap<>();
-        String name = "", value;
-        while (parser.hasNext()) {
-            JsonParser.Event event = parser.next();
-            switch (event) {
-                case KEY_NAME:
-                    name = parser.getString();
-                    break;
-                case VALUE_STRING:
-                    value = parser.getString();
-                    map.put(name, value);
-                    break;
-                case VALUE_NUMBER:
-                    value = Integer.toString(parser.getInt());
-                    map.put(name, value);
-                    break;
-            }
-        }
-        System.out.println(map);
-
-        
-       
-        String feedback = map.get("feedback");
-        String category = map.get("category");
-        doUpdate("update feedback  SET feedback = ?, category = ?  where id = ? AND feedback_id = ?" ,feedback, category, id , feedback_id);
-
-    }
        
        private int doUpdate(String query, String... params) {
         int numChanges = 0;
