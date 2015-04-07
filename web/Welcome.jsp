@@ -19,18 +19,23 @@
        
        Student std1 = new Student();
        std1.setEmail(us);
-       std1.getEmail();
+       std1.GetUser();
        
        out.print("Welcome ");
        out.print(std1.getFirstName());
-        out.print(" ");
-      out.print(std1.getLastName());
+       out.print(" ");
+       out.print(std1.getLastName());
        out.print("!!!!");
+       out.print("<br>");
+       out.print(std1.getEmail());
+       out.print("<br>");
+       out.print(std1.getAddress());
+       
  
        %>
        
        <br><br>
-       <a href="logout.jsp">Log Out</a>
+       <a href="Logout.jsp">Log Out</a>
        <br><br>
     </body>
 </html>
