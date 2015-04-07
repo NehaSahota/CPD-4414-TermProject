@@ -17,6 +17,7 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -29,6 +30,15 @@ public class feedback {
     @Produces("application/json")
     public String doGet() {
         String str = getResults("SELECT * FROM feedback");
+        return str;
+    }
+    
+     
+    @GET
+    @Path("{id}")
+    @Produces("application/json")
+    public String doGet(@PathParam("id") String id) {
+        String str = getResults("SELECT * FROM feedback where id = ?", id);
         return str;
     }
     
@@ -48,22 +58,22 @@ public class feedback {
             while (rs.next()) {
 
                 JsonObjectBuilder jsonob = Json.createObjectBuilder()
-                        .add("feedback_id", rs.getInt("id"))
+                        .add("feedback_id", rs.getInt("feedback_id"))
                         .add("id", rs.getString("id"))
                         .add("feedback", rs.getString("feedback"))
                         .add("category", rs.getString("category"));
                        
 
-                myString = jsonob.build().toString();
+
                 productArray.add(jsonob);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (inside == 0) {
+
             myString = productArray.build().toString();
-        }
+
         return myString;
     }
        
