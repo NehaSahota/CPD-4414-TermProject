@@ -10,10 +10,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register</title>
+       <title>Register</title>
     </head>
     <body>
-        <h1>Register Here</h1>
+         <center><h1>Register Here</h1></center>
         <jsp:useBean id="student" scope="request" class="beans.Student"></jsp:useBean>
         <form name="registration_form" action="RegistrationServlet" method="POST">
             
@@ -22,37 +22,36 @@
                 <table border="0">
                     <thead>
                         <tr>
-                            <th>Registration Form</th>
-                            
+                            <th>Registration Form</th>                        
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>First Name : </td>
-                            <td><input type="text" name="firstName" value="<jsp:getProperty name="firstName" property="firstName"/>"></td>
+                            <td><input type="text" name="firstName" value="<jsp:getProperty name="student" property="firstName"/>"></td>
                         </tr>
                         <tr>
                             <td>Last Name :</td>
-                            <td><input type="text" name="lastName" value="<jsp:getProperty name="lastName" property="lastName"/>" /></td>
+                            <td><input type="text" name="lastName" value="<jsp:getProperty name="student" property="lastName"/>"></td>
                         </tr>
                         <tr>
                             <td>Email : </td>
-                            <td><input type="text" name="email" value="<jsp:getProperty name="email" property="email"/>" /></td>
+                            <td><input type="text" name="email" value="<jsp:getProperty name="student" property="email"/>"></td>
                         </tr>
                         <tr>
                             <td>Address :</td>
-                            <td><input type="text" name="address" value="<jsp:getProperty name = "email" property="email"/>" /></td>
+                            <td><input type="text" name="address" value="<jsp:getProperty name = "student" property="email"/>"></td>
                         </tr>
                         <tr>
                             <td>Password : </td>
-                            <td><input type="password" name="password" value="<jsp:getProperty name = "password" property="password"/>" /></td>
+                            <td><input type="password" name="password" value="<jsp:getProperty name = "student" property="password"/>"></td>
                         </tr>
                      
                     </tbody>
-                    <input type="reset" value="Clear" name="Clear" />
-                    <input type="submit" value="Register" name="Register" />
+                   
                 </table>
-
+                   <input type="reset" value="Clear" name="Clear" />
+                   <input type="submit" value="Register" name="Register" />
                 
                 
             </center>
