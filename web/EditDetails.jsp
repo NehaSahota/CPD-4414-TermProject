@@ -44,10 +44,14 @@
                     <div class="well" style="width: 50%;float: right;">
 
                         <div class="container">
-                            <form name="edit_form" action="RegistrationServlet" method="POST">
+                            <form name="edit_form" action="#" method="POST">
                             <%
                                 Student st1 = (Student) session.getAttribute("curObj");
                                 String firstname = st1.getFirstName();
+                                String lastname = st1.getLastName();
+                                String email = st1.getEmail();
+                                String address = st1.getAddress();
+                                String password = st1.getPassword();
                             %>
 
                             <div class="input-group">
@@ -63,14 +67,14 @@
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Last Name</span>
                                 <input type="text" class="form-control" 
-                                       placeholder="Last Name" name="lastName" value="<jsp:getProperty name="student" property="lastName"/>"
+                                       placeholder="Last Name" name="lastName" value="<%=lastname%>"
                                        aria-describedby="basic-addon1">
 
                             </div><br>   
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Email</span>
                                 <input type="text" class="form-control" 
-                                       placeholder="Email" name="email" value="<jsp:getProperty name="student" property="email"/>"
+                                       placeholder="Email" name="email" value="<%=email%>"
                                        aria-describedby="basic-addon1">
 
                             </div><br>   
@@ -78,14 +82,14 @@
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Address</span>               
                                 <input type="text" class="form-control" 
-                                       placeholder="Address" name="address" value="<jsp:getProperty name = "student" property="email"/>"
+                                       placeholder="Address" name="address" value="<%=address%>"
                                        aria-describedby="basic-addon1">
 
                             </div><br>   
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Password</span>                     
                                 <input type="password" class="form-control" 
-                                       placeholder="Password" name="password" value="<jsp:getProperty name = "student" property="password"/>"
+                                       placeholder="Password" name="password" value="<%=password%>"
                                        aria-describedby="basic-addon1">
 
                             </div><br>  
