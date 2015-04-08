@@ -5,11 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="beans.Student"%>
 
 <!DOCTYPE html>
 <html>
     <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -22,30 +23,87 @@
         <title>Edit Details Page</title>
     </head>
     <body>
-        <div class="panel panel-info">
-            <div class="panel-heading">Panel Heading</div>
-            <div class="panel-body">
-                <div class="container" style="width: 50%;float: left;">
+        <jsp:useBean id="student" scope="request" class="beans.Student"></jsp:useBean>
 
-                    <ul class="nav nav-pills nav-stacked">
+            <div class="panel panel-info">
+                <div class="panel-heading">Panel Heading</div>
+                <div class="panel-body">
+                    <div class="container" style="width: 50%;float: left;">
 
-                        <li role="presentation" class="active"><a href="#">Personal Information</a></li>
-                        <li role="presentation"><a href="AddFeedback.jsp">Add Feedback</a></li>
-                        <li role="presentation"><a href="#">View Feedback</a></li>
+                        <ul class="nav nav-pills nav-stacked">
 
-                    </ul>
+                            <li role="presentation" class="active"><a href="#">Personal Information</a></li>
+                            <li role="presentation"><a href="AddFeedback.jsp">Add Feedback</a></li>
+                            <li role="presentation"><a href="#">View Feedback</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!--              <div class="container"> -->
+                    <div class="well" style="width: 50%;float: right;">
+
+                        <div class="container">
+                            <form name="edit_form" action="RegistrationServlet" method="POST">
+                            <%
+                                Student st1 = (Student) session.getAttribute("curObj");
+                                String firstname = st1.getFirstName();
+                            %>
+
+                            <div class="input-group">
+
+                                <span class="input-group-addon" id="basic-addon1">First Name</span>
+
+
+                                <input type="text" class="form-control" 
+                                       placeholder="First Name" name="firstName" value="<%=firstname%>" 
+                                       aria-describedby="basic-addon1">
+                            </div> <br>           
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Last Name</span>
+                                <input type="text" class="form-control" 
+                                       placeholder="Last Name" name="lastName" value="<jsp:getProperty name="student" property="lastName"/>"
+                                       aria-describedby="basic-addon1">
+
+                            </div><br>   
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Email</span>
+                                <input type="text" class="form-control" 
+                                       placeholder="Email" name="email" value="<jsp:getProperty name="student" property="email"/>"
+                                       aria-describedby="basic-addon1">
+
+                            </div><br>   
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Address</span>               
+                                <input type="text" class="form-control" 
+                                       placeholder="Address" name="address" value="<jsp:getProperty name = "student" property="email"/>"
+                                       aria-describedby="basic-addon1">
+
+                            </div><br>   
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Password</span>                     
+                                <input type="password" class="form-control" 
+                                       placeholder="Password" name="password" value="<jsp:getProperty name = "student" property="password"/>"
+                                       aria-describedby="basic-addon1">
+
+                            </div><br>  
+
+                            <center><input type="reset" value="Clear" name="Clear" class="btn btn-default" /></center>
+                            <center><input type="submit" value="Save" name="Save" class="btn btn-default"  /></center>
+
+
+
+
+
+                        </form>
+                    </div>
+
+                    <!--                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>Edit</button>-->
+
 
                 </div>
 
-                <!--              <div class="container"> -->
-                <div class="well" style="width: 50%;float: right;">
-
-                    
-                    
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>Edit</button>
-
-
-                </div>
-        
-    </body>
-</html>
+                </body>
+                </html>
