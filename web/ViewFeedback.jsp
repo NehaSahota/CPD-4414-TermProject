@@ -78,24 +78,24 @@
                                 out.print("</li>");
                                 out.print("<li>Student ID :");
                                 out.print(f.getId());
-
+                           
                                 out.print("</li>");
-                                 out.print("<li>");
+                                out.print("<li>");
                                 out.print("Date :");
                                 out.print(f.getDate());
                                 out.print("</ll>");
-                                 out.print("<li>");
+                                out.print("<li>");
                                 out.print("Feedback :");
                                 out.print(f.getFeedback());
-                               out.print("<li>");
+                                out.print("<li>");
                                 out.print("Category:");
                                 out.print(f.getCategory());
-                                 out.print("</li>");
-                                   out.print("</ul>");
-                                out.print("<br>");
+                                out.print("</li>");
+                                out.print("</ul>");
+                           
+                               
+                                out.print("<a href='EditDetails.jsp'><button class='btn btn-default' style='margin-left:2em;'><span class='glyphicon glyphicon-edit'>Edit</button></span></a>");
                                  out.print("<br>");
-                                
-                                
                             }
                         %>
 
@@ -104,7 +104,7 @@
                         <!--              <div class="container"> -->
 
 
-                        <a href="EditDetails.jsp"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>Edit</button></a>
+                    
 
 
                     </div>
