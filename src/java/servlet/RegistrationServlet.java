@@ -7,9 +7,11 @@
 package servlet;
 
 import beans.Student;
-import static com.sun.xml.ws.api.message.Packet.Status.Request;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,15 +54,12 @@ public class RegistrationServlet extends HttpServlet {
            out.println("<br>");
            out.println("<center> GREAT !!! </center>");
            RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-           rd.forward(request, response);
+           rd.forward(request,response);
        }finally {out.close();}
-           
-           
-           
-         
+
         }
     
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+   
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -89,6 +88,42 @@ public class RegistrationServlet extends HttpServlet {
         processRequest(request, response);
     }
 
+    
+    
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+        
+       response.setContentType("text/html;charset=UTF-8");
+       PrintWriter out = response.getWriter();
+       try
+       {
+           Student student = new Student();
+           
+           student.setFirstName(request.getParameter("firstName"));
+           student.setLastName(request.getParameter("lastName"));
+           student.setEmail(request.getParameter("email"));
+           student.setAddress(request.getParameter("address"));
+           student.setPassword(request.getParameter("password"));
+           
+           student.UpdateUser();
+           
+           out.println("<br>");
+           out.println("<br>");
+           out.println("<center> GREAT !!! </center>");
+           RequestDispatcher rd = request.getRequestDispatcher("Welcome.jsp");
+           rd.forward(request,response);
+       } catch (SQLException ex) {
+            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {out.close();}
+
+        
+        
+        
+        
+        
+    }
     /**
      * Returns a short description of the servlet.
      *
