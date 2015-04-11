@@ -126,7 +126,7 @@ public class Student {
     }
 
     public void GetUser() throws SQLException {
-        
+
         Connection conn = Credentials.getConnection();
         String query = "SELECT * FROM student WHERE email = '" + email + "'";
         Statement stmt = conn.createStatement();
@@ -146,23 +146,25 @@ public class Student {
         conn.close();
 
     }
-    
-    
-     public void UpdateUser() throws SQLException {
-         try (Connection conn = Credentials.getConnection()) {
-        try {
-        String query = "UPDATE student SET firstName = '"+firstName+"' , lastName = '"+lastName+"' , email = '"+email+"' , address = '"+address+"' , password = '"+password+"'  WHERE email = '" + email+"'";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
 
-        stmt.close();
-        conn.close();
+    public void UpdateUser() throws SQLException {
+        try (Connection conn = Credentials.getConnection()) {
+            try {
+                String query = "UPDATE student SET firstName = '" + firstName + "' , "
+                        + "lastName = '" + lastName + "' , email = '" + email + "' , address = '" + address + "' , "
+                        + "password = '" + password + "'  WHERE email = '" + email + "'";
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(query);
+                
+                
+                stmt.close();
+                conn.close();
 
-    } catch (SQLException ex) {
-            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
-                }
-         
-         }
+            } catch (SQLException ex) {
+                Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-}
+        }
+
+    }
 }
