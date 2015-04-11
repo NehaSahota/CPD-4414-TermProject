@@ -89,41 +89,6 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     
-    
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-        
-       response.setContentType("text/html;charset=UTF-8");
-       PrintWriter out = response.getWriter();
-       try
-       {
-           Student student = new Student();
-           
-           student.setFirstName(request.getParameter("firstName"));
-           student.setLastName(request.getParameter("lastName"));
-           student.setEmail(request.getParameter("email"));
-           student.setAddress(request.getParameter("address"));
-           student.setPassword(request.getParameter("password"));
-           
-           student.UpdateUser();
-           
-           out.println("<br>");
-           out.println("<br>");
-           out.println("<center> GREAT !!! </center>");
-           RequestDispatcher rd = request.getRequestDispatcher("Welcome.jsp");
-           rd.forward(request,response);
-       } catch (SQLException ex) {
-            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {out.close();}
-
-        
-        
-        
-        
-        
-    }
     /**
      * Returns a short description of the servlet.
      *
