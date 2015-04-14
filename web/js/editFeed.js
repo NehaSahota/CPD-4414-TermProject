@@ -37,4 +37,34 @@ $(document).ready(function() {
             });
         }
     });
+    
+    
+   $(document).ready(function() {
+    $('#saveFeedback').click(function() {
+        
+        var category = $('#categ').val();
+        var feedback = $('#feedback').val();
+        if (feedback === '') {
+            $("#dialogErr").text("Please enter feedback.");
+        } else {
+            $.ajax({
+                url: "./rs/feedback/",
+                type: 'POST',
+                data:  JSON.stringify({
+                            "id" : $('#studentId').val(),
+                            "category": $('#categ').val(),
+                            "feedback" :$('#feedback').val()
+                        }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function(data) {
+//                    $("#closeCustomerDialog").click();
+//                    $("#dialogErr").text("");
+                    window.location.href = "./Welcome.jsp";
+                }
+            });
+        }
+    });
+  
+});
 });
