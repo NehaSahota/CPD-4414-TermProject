@@ -50,8 +50,9 @@
                     <!--              <div class="container"> -->
                     <div class="well" style="width: 70%;float: right;">
 
-                        <center><h3>Feedback Added Successfully </h3></center>
-                         <button type="button" id="viewFeedback" action="ViewFeedback.jsp" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span>View</button>
+                        <center><h3>Feedback Added Successfully </h3></center><br>
+                        
+                         <center><a href="ViewFeedback.jsp"><button type="button" id="viewFeedback" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span>View Your Feedback</button></a></center>
 
 
                     </div>
