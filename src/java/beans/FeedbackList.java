@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package beans;
 
 import credentials.Credentials;
@@ -19,7 +18,7 @@ import java.util.List;
  * @author c0646567
  */
 public class FeedbackList {
-    
+
     private List<Feedback> feedbackList = new ArrayList<>();
 
     public FeedbackList() {
@@ -32,8 +31,7 @@ public class FeedbackList {
     public void setFeedbackList(List<Feedback> feedbackList) {
         this.feedbackList = feedbackList;
     }
-    
-    
+
     public void getFeedbackData(String query) throws SQLException {
         Connection conn = Credentials.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(query);
@@ -43,14 +41,12 @@ public class FeedbackList {
             Feedback feed = new Feedback();
             feed.setFeedback_id(rs.getString("feedback_id"));
             feed.setId(rs.getString("id"));
-            feed.setId(rs.getString("date"));
-             feed.setFeedback(rs.getString("feedback"));
-              feed.setCategory(rs.getString("categoy"));
+            feed.setDate(rs.getString("date"));
+            feed.setFeedback(rs.getString("feedback"));
+            feed.setCategory(rs.getString("category"));
             feedbackList.add(feed);
         }
         setFeedbackList(feedbackList);
     }
-    
-    
-    
+
 }

@@ -119,9 +119,9 @@ public class feedback {
     }
     
     @DELETE
-    @Path("{id}/{feedback_id}")
-    public void doDelete(@PathParam("id") String id, @PathParam("feedback_id") String feedback_id, String str) {
-        doUpdate("delete from feedback where id = ? AND feedback_id = ?", id , feedback_id);
+    @Path("{id}")
+    public void doDelete(@PathParam("id") String id, String str) {
+        doUpdate("delete from feedback where feedback_id = ?", id);
     }
     
     private String getResults(String query, String... params) {

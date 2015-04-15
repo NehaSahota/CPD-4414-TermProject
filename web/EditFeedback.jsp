@@ -90,30 +90,21 @@
                                     <option value="Faculty">Faculty</option>
                                     <option value="Cafe">Cafe</option>
                                     <option value="Course">Course</option>
+                                     <option value="Library">Library</option>
                                 </select>
                             </div><br>
 
                             <div class="input-group">
 
                                 <span class="input-group-addon" id="basic-addon1">Feedback</span>
-
-
-                                <input type="textarea" id ="editedFeedback" class="form-control" 
+                                       <input type="textarea" id ="editedFeedback" class="form-control" 
                                        placeholder="Feedback" name="feedback"  
                                        aria-describedby="basic-addon1">
                             </div> <br>           
 
-
-
-
                             <button type="button" id="updatfeedbackId" class="btn btn-default feedbackUpdate"><span class="glyphicon glyphicon-edit"></span>Update</button>
 
-
-
                         </div>
-
-                        <!--                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>Edit</button>-->
-
 
                     </div>
                 </div>

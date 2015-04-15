@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Latest compiled and minified CSS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
         <!-- Optional theme -->
@@ -21,6 +22,7 @@
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="js/editFeed.js"></script>
         <title>View Feedback Page</title>
     </head>
     <body>
@@ -31,14 +33,14 @@
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">
-                                <img alt="Brand" src="...">
+                             <img alt="Brand" src="feed1.jpg" height="60px" >
                             </a>
                             <button type="button" class="btn btn-default" style="margin-left: 70em;"><span class="glyphicon glyphicon-log-out"></span><a href="Logout.jsp">Log Out</a></button>
                         </div>
                     </div>
                 </nav>
                 <div class="panel panel-info">
-                    <div class="panel-heading">Panel Heading</div>
+                     <div class="panel-heading"><center><b>Welcome to Feedback Collection System</b></center></div>
                     <div class="panel-body">
                         <div class="container" style="width: 30%;float: left;">
 
@@ -78,7 +80,7 @@
                                 out.print("</li>");
                                 out.print("<li>Student ID :");
                                 out.print(f.getId());
-                           
+
                                 out.print("</li>");
                                 out.print("<li>");
                                 out.print("Date :");
@@ -92,10 +94,12 @@
                                 out.print(f.getCategory());
                                 out.print("</li>");
                                 out.print("</ul>");
-                           
-                               
-                                out.print("<a href='EditDetails.jsp'><button class='btn btn-default' style='margin-left:2em;'><span class='glyphicon glyphicon-edit'>Edit</button></span></a>");
-                                 out.print("<br>");
+
+                                out.print("<button id='"+f.getFeedback_id()+"' class='btn btn-default editFeedback' style='margin-left:2em;'>"
+                                        + "<span class='glyphicon glyphicon-edit'>Edit</button></span>");
+                                out.print("<button id='"+f.getFeedback_id()+"' class='btn btn-default feedbackDel' style='margin-left:.5em;'>"
+                                        + "<span class='glyphicon glyphicon-trash'>Delete</button></span>");
+                                out.print("<br>");
                             }
                         %>
 
@@ -104,7 +108,7 @@
                         <!--              <div class="container"> -->
 
 
-                    
+
 
 
                     </div>

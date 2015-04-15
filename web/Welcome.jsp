@@ -23,19 +23,21 @@
     </head>
     <body>
 
+        
         <div class="container">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">
-                            <img alt="Brand" src="...">
+                           <img alt="Brand" src="feed1.jpg" height="60px" >
                         </a>
-                        <button type="button" class="btn btn-default" style="margin-left: 70em;"><span class="glyphicon glyphicon-log-out"></span><a href="Logout.jsp">Log Out</a></button>
+                      
                     </div>
+                      <button type="button" class="btn btn-default" style="margin-left: 70em;"><span class="glyphicon glyphicon-log-out"></span><a href="Logout.jsp">Log Out</a></button>
                 </div>
             </nav>
             <div class="panel panel-info">
-                <div class="panel-heading">Panel Heading</div>
+                <div class="panel-heading"><center><b>Welcome to Feedback Collection System</b></center></div>
                 <div class="panel-body">
                     <div class="container" style="width: 30%;float: left;">
 
@@ -91,8 +93,8 @@
 
                         %>
 
-                        <a href="EditDetails.jsp"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>Edit</button></a>
-                        <a href="#"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>Delete</button></a>
+                        <a href="EditDetails.jsp"><button type="button" class="btn btn-default" style="margin-left: 2em;"><span class="glyphicon glyphicon-edit"></span>Edit</button></a>
+                       
 
 
                     </div>

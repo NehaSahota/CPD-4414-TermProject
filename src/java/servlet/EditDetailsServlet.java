@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import beans.Student;
@@ -36,30 +35,27 @@ public class EditDetailsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-            /* TODO output your page here. You may use following sample code. */
-             try
-       (PrintWriter out = response.getWriter()) {
-           Student student = new Student();
-           
-           student.setFirstName(request.getParameter("firstName"));
-           student.setLastName(request.getParameter("lastName"));
-           student.setEmail(request.getParameter("email"));
-           student.setAddress(request.getParameter("address"));
-           student.setPassword(request.getParameter("password"));
-           
-           student.UpdateUser();
-           
-           out.println("<br>");
-           out.println("<br>");
-           
-           RequestDispatcher rd = request.getRequestDispatcher("Welcome.jsp");
-           rd.forward(request,response);
-       }
-            
-            
-           
+        /* TODO output your page here. You may use following sample code. */
+        try (PrintWriter out = response.getWriter()) {
+            Student student = new Student();
+
+            student.setFirstName(request.getParameter("firstName"));
+            student.setLastName(request.getParameter("lastName"));
+            student.setEmail(request.getParameter("email"));
+            student.setAddress(request.getParameter("address"));
+            student.setPassword(request.getParameter("password"));
+
+            student.UpdateUser();
+            student.GetUser();
+
+            out.println("<br>");
+            out.println("<br>");
+
+            RequestDispatcher rd = request.getRequestDispatcher("Welcome.jsp");
+            rd.forward(request, response);
         }
-    
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -109,4 +105,3 @@ public class EditDetailsServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-

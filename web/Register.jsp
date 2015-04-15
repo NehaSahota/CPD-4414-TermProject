@@ -21,111 +21,91 @@
         <title>Register</title>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">
-                <img alt="Brand" src="...">
-              </a>
-            </div>
-          </div>
-        </nav>
-
-<!--      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="Register.jsp">Register <span class="sr-only">(current)</span></a></li>
-        
-        <li><a href="Login.jsp">Login</a></li>
-        </ul>
-        </div>-->
-
-    <center><h1>Register Here</h1></center>
-        <jsp:useBean id="student" scope="request" class="beans.Student"></jsp:useBean>
-    
-    
-    <div class="panel panel-info">
-            <div class="panel-heading">Panel heading</div>
-            <div class="panel-body">
-    
         <div class="container">
-            <form name="registration_form" action="RegistrationServlet" method="POST">
+           <nav class="navbar navbar-default" style="height: 6em;">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                            <img alt="Brand" src="feed1.jpg" height="60px" >
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!--      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="Register.jsp">Register <span class="sr-only">(current)</span></a></li>
+                    
+                    <li><a href="Login.jsp">Login</a></li>
+                    </ul>
+                    </div>-->
+
            
+                <jsp:useBean id="student" scope="request" class="beans.Student"></jsp:useBean>
 
-<!--            <center>-->
+            
+                    <div class="panel panel-info">
+                         <div class="panel-heading"><center><b>Welcome to Feedback Collection System</b></center></div>
+                        <div class="panel-body">
+                             <center><h1>Register Here</h1></center>
 
-<!--                <table border="0">
-                    <thead>
-                        <tr>-->
-<!--                            <h1>Registration Form</h1>                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>-->
-                    <div class="input-group">
-                        <!--                        <td>First Name : </td>-->
-                            <span class="input-group-addon" id="basic-addon1">First Name</span>
-                            <!--<td><input type="text" name="firstName"></td>-->
+                            <div class="container" style="width: 50%;">
+                                <form name="registration_form" action="RegistrationServlet" method="POST">
 
-                            <input type="text" class="form-control" 
-                                   placeholder="Username" name="firstName" value="<jsp:getProperty name="student" property="firstName"/>" 
-                            aria-describedby="basic-addon1">
-                    </div> <br>           
-<!--                </tr>
-                <tr>
-                    <td>Last Name :</td>-->
-                     <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Last Name</span>
-                             <input type="text" class="form-control" 
-                                   placeholder="Last Name" name="lastName" value="<jsp:getProperty name="student" property="lastName"/>"
-                                     aria-describedby="basic-addon1">
-<!--                </tr>
-                <tr> 
-                   
-                    <td>Email : </td>-->
-                    </div><br>   
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Email</span>
-                            <input type="text" class="form-control" 
-                                   placeholder="Email" name="email" value="<jsp:getProperty name="student" property="email"/>"
-                                     aria-describedby="basic-addon1">
-<!--                </tr>
-                <tr>
-                    <td>Address :</td>-->
-                    </div><br>   
-                                     
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Address</span>               
-                            <input type="text" class="form-control" 
-                                   placeholder="Address" name="address" value="<jsp:getProperty name = "student" property="email"/>"
-                                     aria-describedby="basic-addon1">
-<!--                </tr>
-                <tr>
-                    <td>Password : </td>-->
-                    </div><br>   
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Password</span>                     
-                            <input type="password" class="form-control" 
-                                   placeholder="Password" name="password" value="<jsp:getProperty name = "student" property="password"/>"
-                            aria-describedby="basic-addon1">
-<!--                </tr>
 
-                </tbody>
+                                    <div class="input-group">
 
-            </table>-->
-                     </div><br>  
-                     
-                     <center><input type="reset" value="Clear" name="Clear" class="btn btn-default" /></center>
-                     <center><input type="submit" value="Register" name="Register" class="btn btn-default"  /></center>
+                                        <span class="input-group-addon" id="basic-addon1">First Name</span>
+
+
+                                        <input type="text" class="form-control" 
+                                               placeholder="First Name" name="firstName" value="<jsp:getProperty name="student" property="firstName"/>" 
+                                        aria-describedby="basic-addon1">
+                                </div> <br>           
+
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Last Name</span>
+                                    <input type="text" class="form-control" 
+                                           placeholder="Last Name" name="lastName" value="<jsp:getProperty name="student" property="lastName"/>"
+                                           aria-describedby="basic-addon1">
+
+                                </div><br>   
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Email</span>
+                                    <input type="text" class="form-control" 
+                                           placeholder="Email" name="email" value="<jsp:getProperty name="student" property="email"/>"
+                                           aria-describedby="basic-addon1">
+
+                                </div><br>   
+
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Address</span>               
+                                    <input type="text" class="form-control" 
+                                           placeholder="Address" name="address" value="<jsp:getProperty name = "student" property="email"/>"
+                                           aria-describedby="basic-addon1">
+
+                                </div><br>   
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Password</span>                     
+                                    <input type="password" class="form-control" 
+                                           placeholder="Password" name="password" value="<jsp:getProperty name = "student" property="password"/>"
+                                           aria-describedby="basic-addon1">
+
+                                </div><br>  
+
+                                <!--<center><input type="reset" value="Clear" name="Clear" class="btn btn-default" /></center>-->
+                                <center><input type="submit" value="Register" name="Register" class="btn btn-default"  /></center><br>
 
 
 
-<!--        </center>-->
-                 <center><p>Already Registered?</p><a href="Login.jsp">Click here to Login</a></center>
-        </form>
+
+                                <center>Already Registered?<a href="Login.jsp">Click here to Login</a></center>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel-footer"><center>Copyright &copy; Neha</center></div>
+                </div>
+            </div>
         </div>
-    </div>
-                            <div class="panel-footer"><center>Copyright &copy; Neha</center></div>
-    </div>
-                           
-</body>
+    </body>
 </html>

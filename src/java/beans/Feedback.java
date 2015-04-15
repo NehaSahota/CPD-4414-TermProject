@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -95,17 +97,58 @@ public class Feedback {
 
     }
     
+    
+     public void AddFeedback() {
+        try (Connection conn = Credentials.getConnection()) {
+
+            String query = "INSERT INTO feedback (id , category , feedback) VALUES ('"+ id +"' , '" + category + "','" + feedback + "')";
+            Statement stmt = conn.createStatement();
+            try {
+                stmt.executeUpdate(query);
+                stmt.close();
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    
         public void DeleteFeedback() throws SQLException {
        
 
         Connection conn = Credentials.getConnection();
-        String query = "DELETE * FROM feedback WHERE id = '" + id + "'";
+        String query = "DELETE * FROM feedback WHERE feedback_id = '" + feedback_id + "'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
-      
         stmt.close();
         conn.close();
+
+    }
+        
+        
+         public void UpdateFeedback() throws SQLException {
+        try (Connection conn = Credentials.getConnection()) {
+            try {
+                String query = "UPDATE feedback SET feeback = '" + feedback + "'  WHERE feedback_id = '" + feedback_id + "'";
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(query);
+                
+                
+                stmt.close();
+                conn.close();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
 
     }
 

@@ -3,23 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import beans.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author c0646567
  */
-@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
+//@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
 public class loginServlet extends HttpServlet {
 
     /**
@@ -32,26 +36,40 @@ public class loginServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter() ;
-          try 
-        {
-          Student student = new Student();
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet loginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet loginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }finally{out.close();}
+        PrintWriter out = response.getWriter();
+        try {
+            Student student = new Student();
+           
+            student.setEmail(request.getParameter("email"));
+            student.setPassword(request.getParameter("password"));
+        
+            if (Student.LoginUser(request.getParameter("email"), request.getParameter("password"))) {
+                Student stud = new Student();
+                stud.setEmail(String.valueOf(request.getParameter("email")));
+                stud.GetUser();
+
+                HttpSession sessionUser = request.getSession();
+                sessionUser.setAttribute("email", stud.getEmail());
+              
+
+                RequestDispatcher rd1 = request.getRequestDispatcher("Welcome.jsp");
+                rd1.forward(request, response);
+
+            } else {
+                RequestDispatcher rd2 = request.getRequestDispatcher("Wrong.jsp");
+                rd2.forward(request, response);
+//                out.println("<b>Either email or password is incorrect<b>");
+//                out.println("<a href=\"Login.jsp\"> Try again .....</a>");
+            }
+
+        } finally {
+            out.close();
+        }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -63,7 +81,11 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -77,7 +99,11 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

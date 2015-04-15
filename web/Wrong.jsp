@@ -36,15 +36,15 @@
        
             
             
-                    <div class="panel panel-info">
-                        <div class="panel-heading"><center><b>Welcome to Feedback Collection System</b></center></div>
-                        <div class="panel-body">
-        <center><h1>Ooops!!!<h1></center>
-                
-                    <center><h3>Either username or password is wrong </h3></center>
-                    <center><a href="Login.jsp"><h3>Click here to try again </h3></a></center>
-           </div>
-                                                     </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading"><center><b>Welcome to Feedback Collection System</b></center></div>
+                                 <div class="panel-body">
+                                    <center><h1>Ooops!!!<h1></center>
+
+                                    <center><h3>Either username or password is wrong </h3></center>
+                                    <center><a href="Login.jsp"><h3>Click here to try again </h3></a></center>
+                                </div>
+                         </div>
                 
                     <div class="panel-footer"><center>Copyright &copy; Neha</center></div>
                 </div>

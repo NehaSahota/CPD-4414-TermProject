@@ -129,6 +129,7 @@ public class test {
     
        private String getResults(String query, String... params) {
         JsonArrayBuilder productArray = Json.createArrayBuilder();
+        JsonObjectBuilder lastObject = null;
         String myString = new String();
         int inside=0;
         try (Connection conn = Credentials.getConnection()) {
@@ -149,9 +150,10 @@ public class test {
                         .add("email", rs.getString("email"))
                         .add("address", rs.getString("address"));
 
-                myString = jsonob.build().toString();
+                lastObject = jsonob;
                 productArray.add(jsonob);
             }
+            myString = lastObject.build().toString();                
 
         } catch (SQLException ex) {
             Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);

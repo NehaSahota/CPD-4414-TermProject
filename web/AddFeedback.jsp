@@ -74,7 +74,7 @@
                        %>
                         
 
-<!--                        <form name="add_feedback_form" action="editFeed.js" method="POST" >-->
+
                             <div class="input-group">                 
                                 <input type="hidden" id="studentId" value="<%=currID%>" >
                             </div><br>
@@ -83,6 +83,7 @@
                                     <option value="Faculty">Faculty</option>
                                     <option value="Cafe">Cafe</option>
                                     <option value="Course">Course</option>
+                                     <option value="Library">Library</option>
                                 </select>
                             </div><br>
 
@@ -100,7 +101,7 @@
                             </div> <br> 
 
                             <button type="button" id="saveFeedback" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>Add</button>
-<!--                        </form>-->
+                     
 
                     </div>
 
@@ -112,7 +113,7 @@
                 <div class="panel-footer"><center>Copyright &copy; Neha</center></div>
             </div>
 
-        </div>>
+        </div>
 
     </body>
 </html>
