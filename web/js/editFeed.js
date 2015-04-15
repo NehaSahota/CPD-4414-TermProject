@@ -17,31 +17,16 @@ $(document).ready(function() {
             }
         });
     });
-    $('#editFeedbackSave').click(function() {
-        var feedbackName = $('#feedbackNameEdit').val();
-        var res = {name: $('#feedbackNameEdit').val()};
-        var feedbackId = $('#feedbackIdEdit').val();
-        if (feedbackName === '') {
-            $("#dialogErr").text("Please enter name.");
-        } else {
-            $.ajax({
-                url: './rs/feedback/' + feedbackId,
-                type: 'PUT',
-                data: JSON.stringify(res),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function(data) {
-                    $("#dialogErr").text("");
-                    window.location.href = "./ViewFeedback.jsp";
-                }
-            });
-        }
+
+
+    $('.editFeedback').click(function() {
+        var EditPagefeedbackId = $(this).attr("id");
+        window.location.href = "./EditFeedback.jsp?feed="+EditPagefeedbackId;
     });
     
-    
-   $(document).ready(function() {
+
     $('#saveFeedback').click(function() {
-        
+
         var category = $('#categ').val();
         var feedback = $('#feedback').val();
         if (feedback === '') {
@@ -50,21 +35,20 @@ $(document).ready(function() {
             $.ajax({
                 url: "./rs/feedback/",
                 type: 'POST',
-                data:  JSON.stringify({
-                            "id" : $('#studentId').val(),
-                            "category": $('#categ').val(),
-                            "feedback" :$('#feedback').val()
-                        }),
+                data: JSON.stringify({
+                    "id": $('#studentId').val(),
+                    "category": $('#categ').val(),
+                    "feedback": $('#feedback').val()
+                }),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function(data) {
 //                    $("#closeCustomerDialog").click();
 //                    $("#dialogErr").text("");
-                    window.location.href = "./Welcome.jsp";
+                    window.location.href = "./feedAdded.jsp";
                 }
             });
         }
     });
-  
-});
+
 });
